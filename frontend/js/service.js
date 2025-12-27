@@ -451,7 +451,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             try {
                 // Create booking via API
-                const bookingResponse = await fetch('http://localhost:3000/api/bookings', {
+                const API_BASE_URL = window.API_BASE_URL || 'http://localhost:3000';
+                const bookingResponse = await fetch(`${API_BASE_URL}/api/bookings`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

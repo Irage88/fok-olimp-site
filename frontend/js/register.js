@@ -218,13 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
         submitBtn.classList.add('loading');
         submitBtn.textContent = '';
 
-        // Determine API base URL based on environment
-        const API_BASE_URL =
-          (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
-            ? "http://localhost:3000"
-            : window.location.origin;
-        
-        console.log("API_BASE_URL:", API_BASE_URL);
+        const API_BASE_URL = window.API_BASE_URL || 'http://localhost:3000';
 
         // Call backend API
         try {
