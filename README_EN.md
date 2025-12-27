@@ -230,8 +230,8 @@ NODE_ENV=development
 
 ## Documentation
 
-- **[SETUP_EN.md](./SETUP_EN.md)** — Detailed installation and setup guide
-- **[IMPLEMENTATION_SUMMARY_EN.md](./IMPLEMENTATION_SUMMARY_EN.md)** — Project implementation report
+- **[SETUP.en.md](./SETUP.en.md)** — Detailed installation and setup guide
+- **[IMPLEMENTATION_SUMMARY.en.md](./IMPLEMENTATION_SUMMARY.en.md)** — Project implementation report
 
 ### Russian Documentation
 

@@ -33,6 +33,72 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'ok' });
 });
 
+// Clean URL routes (serve HTML files without .html extension)
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../frontend/index.html'));
+});
+
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../frontend/about.html'));
+});
+
+app.get('/services', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../frontend/services.html'));
+});
+
+app.get('/service', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../frontend/service.html'));
+});
+
+app.get('/contacts', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../frontend/contacts.html'));
+});
+
+app.get('/register', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../frontend/register.html'));
+});
+
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../frontend/login.html'));
+});
+
+app.get('/dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../frontend/dashboard.html'));
+});
+
+// Redirects from .html paths to clean paths
+app.get('/index.html', (req, res) => {
+    res.redirect(301, '/');
+});
+
+app.get('/about.html', (req, res) => {
+    res.redirect(301, '/about');
+});
+
+app.get('/services.html', (req, res) => {
+    res.redirect(301, '/services');
+});
+
+app.get('/service.html', (req, res) => {
+    res.redirect(301, '/service');
+});
+
+app.get('/contacts.html', (req, res) => {
+    res.redirect(301, '/contacts');
+});
+
+app.get('/register.html', (req, res) => {
+    res.redirect(301, '/register');
+});
+
+app.get('/login.html', (req, res) => {
+    res.redirect(301, '/login');
+});
+
+app.get('/dashboard.html', (req, res) => {
+    res.redirect(301, '/dashboard');
+});
+
 // Catch-all: serve index.html for SPA routing (if needed)
 // For now, we'll let Express serve static files normally
 
