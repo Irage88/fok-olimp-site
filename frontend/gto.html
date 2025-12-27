@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ФОК "Олимп" - ГТО</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="gto">
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="./index.html">
+                    <img src="assets/images/logo.png" alt="Олимп">
+                </a>
+            </div>
+            <nav class="nav-menu">
+                <a href="./index.html" class="nav-link">Главная</a>
+                <a href="./about.html" class="nav-link">О нас</a>
+                <a href="./services.html" class="nav-link">Услуги</a>
+                <a href="./gto.html" class="nav-link">ГТО</a>
+                <a href="./contacts.html" class="nav-link">Контакты</a>
+            </nav>
+            <div class="header-buttons">
+                <a href="./login.html" class="btn btn-outline">Войти</a>
+                <a href="./register.html" class="btn btn-primary">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- GTO Hero Section -->
+        <section class="gto-hero">
+            <div class="container">
+                <div class="gto-hero-card">
+                    <div class="gto-hero-badge">
+                        <img src="assets/images/icon_check.png" alt="" class="gto-badge-icon">
+                        <span class="gto-badge-text">Комплекс нормативов</span>
+                    </div>
+                    <div class="gto-hero-content">
+                        <h1 class="gto-hero-title">ГТО</h1>
+                        <p class="gto-hero-subtitle">Приглашаем принять участие в выполнении нормативов ГТО</p>
+                        <p class="gto-hero-description">
+                            ГТО — это набор испытаний на силу, выносливость и координацию, который подходит школьникам и взрослым. Чтобы принять участие, выберите свою категорию, уточните детали по контактам и приходите на подготовку или выполнение нормативов.
+                        </p>
+                    </div>
+                    <div class="gto-hero-buttons">
+                        <a href="#gto-norms" class="btn btn-primary">Нормы ГТО</a>
+                        <a href="#gto-contacts" class="btn btn-outline-teal">КОНтакты Гто</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GTO Norms Section -->
+        <section class="gto-norms" id="gto-norms">
+            <div class="container">
+                <h2 class="gto-norms-title">Нормы ГТО</h2>
+                <div class="gto-norms-card">
+                    
+
+                    <!-- Tabs -->
+                    <div class="gtooneline">
+                    <p class="gto-norms-subtitle">Выберите вашу категорию</p>
+                    <div class="gto-tabs" role="tablist">
+                        <button 
+                            class="gto-tab gto-tab-active" 
+                            role="tab"
+                            aria-selected="true"
+                            aria-controls="panel-school"
+                            data-tab="school"
+                            id="tab-school"
+                        >
+                            Для школьников
+                        </button>
+                        <button 
+                            class="gto-tab" 
+                            role="tab"
+                            aria-selected="false"
+                            aria-controls="panel-men"
+                            data-tab="men"
+                            id="tab-men"
+                        >
+                            Для мужчин
+                        </button>
+                        <button 
+                            class="gto-tab" 
+                            role="tab"
+                            aria-selected="false"
+                            aria-controls="panel-women"
+                            data-tab="women"
+                            id="tab-women"
+                        >
+                            Для женщин
+                        </button>
+                    </div>
+                    </div>
+
+                    <!-- Panels Container -->
+                    <div class="gto-panels-wrapper">
+                        <!-- School Panel -->
+                        <div 
+                            class="gto-panel gto-panel-active" 
+                            role="tabpanel"
+                            id="panel-school"
+                            aria-labelledby="tab-school"
+                        >
+                            <div class="gto-panel-list">
+                                <div class="gto-step-row gto-step-row-first">1-я ступень нормы для школьников от 6-7 лет</div>
+                                <div class="gto-step-row">2-я ступень нормы для школьников от 8-9 лет</div>
+                                <div class="gto-step-row">3-я ступень нормы для школьников от 10-11 лет</div>
+                                <div class="gto-step-row">4-я ступень нормы для школьников от 12-13 лет</div>
+                                <div class="gto-step-row">5-я ступень нормы для школьников от 14-15 лет</div>
+                                <div class="gto-step-row gto-step-row-last">6-я ступень нормы для школьников от 16-17 лет</div>
+                            </div>
+                        </div>
+
+                        <!-- Men Panel -->
+                        <div 
+                            class="gto-panel" 
+                            role="tabpanel"
+                            id="panel-men"
+                            aria-labelledby="tab-men"
+                            hidden
+                        >
+                            <div class="gto-panel-list">
+                                <div class="gto-step-row gto-step-row-first">7-я ступень нормы для мужчин от 18-19 лет</div>
+                                <div class="gto-step-row">8-я ступень нормы для мужчин от 20-24 лет</div>
+                                <div class="gto-step-row">9-я ступень нормы для мужчин от 25-29 лет</div>
+                                <div class="gto-step-row">10-я ступень нормы для мужчин от 30-34 лет</div>
+                                <div class="gto-step-row">11-я ступень нормы для мужчин от 35-39 лет</div>
+                                <div class="gto-step-row">12-я ступень нормы для мужчин от 40-44 лет</div>
+                                <div class="gto-step-row">13-я ступень нормы для мужчин от 45-49 лет</div>
+                                <div class="gto-step-row">14-я ступень нормы для мужчин от 50-54 лет</div>
+                                <div class="gto-step-row">15-я ступень нормы для мужчин от 55-59 лет</div>
+                                <div class="gto-step-row">16-я ступень нормы для мужчин от 60-64 лет</div>
+                                <div class="gto-step-row">17-я ступень нормы для мужчин от 65-69 лет</div>
+                                <div class="gto-step-row gto-step-row-last">18-я ступень нормы для мужчин от 70 лет и старше</div>
+                            </div>
+                        </div>
+
+                        <!-- Women Panel -->
+                        <div 
+                            class="gto-panel" 
+                            role="tabpanel"
+                            id="panel-women"
+                            aria-labelledby="tab-women"
+                            hidden
+                        >
+                            <div class="gto-panel-list">
+                                <div class="gto-step-row gto-step-row-first">7-я ступень нормы для женщин от 18-19 лет</div>
+                                <div class="gto-step-row">8-я ступень нормы для женщин от 20-24 лет</div>
+                                <div class="gto-step-row">9-я ступень нормы для женщин от 25-29 лет</div>
+                                <div class="gto-step-row">10-я ступень нормы для женщин от 30-34 лет</div>
+                                <div class="gto-step-row">11-я ступень нормы для женщин от 35-39 лет</div>
+                                <div class="gto-step-row">12-я ступень нормы для женщин от 40-44 лет</div>
+                                <div class="gto-step-row">13-я ступень нормы для женщин от 45-49 лет</div>
+                                <div class="gto-step-row">14-я ступень нормы для женщин от 50-54 лет</div>
+                                <div class="gto-step-row">15-я ступень нормы для женщин от 55-59 лет</div>
+                                <div class="gto-step-row">16-я ступень нормы для женщин от 60-64 лет</div>
+                                <div class="gto-step-row">17-я ступень нормы для женщин от 65-69 лет</div>
+                                <div class="gto-step-row gto-step-row-last">18-я ступень нормы для женщин от 70 лет и старше</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info Note -->
+                    <div class="gto-info-note">
+                        <img src="assets/images/icon_info.png" alt="" class="gto-info-icon">
+                        <p class="gto-info-text">Подробности о расписании, требованиях и порядке участия уточняйте по контактам ниже</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Prepare for GTO Section -->
+        <section class="gto-cta-prepare">
+            <div class="container">
+                <div class="gto-cta-card">
+                    <div class="gto-cta-content">
+                        <h2 class="gto-cta-title">Хотите подготовиться к сдаче нормативов</h2>
+                        <p class="gto-cta-description">Подберём формат занятий и поможем начать с комфортного уровня нагрузки.</p>
+                    </div>
+                    <div class="gto-cta-buttons">
+                        <a href="services.html" class="btn btn-primary">Посмотреть услуги</a>
+                        <a href="#gto-contacts" class="btn btn-outline-teal">Записаться</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GTO Contacts Section -->
+        <section class="gto-contacts-section" id="gto-contacts">
+            <div class="container">
+                <h2 class="gto-contacts-section-title">Контакты ГТО</h2>
+                <div class="gto-contacts-grid">
+                    <div class="gto-contact-card">
+                        <img src="assets/images/icon_phone.png" alt="" class="gto-contact-icon">
+                        <div class="gto-contact-info">
+                            <p class="gto-contact-label">Телефон:</p>
+                            <p class="gto-contact-value">3-26-25</p>
+                            <p class="gto-contact-hint">Звонок в рабочее время</p>
+                        </div>
+                    </div>
+                    <div class="gto-contact-card">
+                        <img src="assets/images/icon_mail.png" alt="" class="gto-contact-icon">
+                        <div class="gto-contact-info">
+                            <p class="gto-contact-label">Электронная почта:</p>
+                            <p class="gto-contact-value">sov-gto@mail.ru</p>
+                            <p class="gto-contact-hint">Ответим на вопросы и заявки</p>
+                        </div>
+                    </div>
+                    <div class="gto-contact-card">
+                        <img src="assets/images/icon_map_2.png" alt="" class="gto-contact-icon">
+                        <div class="gto-contact-info">
+                            <p class="gto-contact-label">Адрес:</p>
+                            <p class="gto-contact-value">ул. Кирова 17, стр 1</p>
+                            <p class="gto-contact-hint">Ледовый дворец</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <img src="assets/images/Footer Logo.png" alt="Олимп">
+                    </div>
+                    <div class="footer-description">
+                        <p>Физкультурно-оздоровительный комплекс города Советский. Тренировки и занятия по расписанию - в удобном формате.</p>
+                    </div>
+                    <div class="footer-actions">
+                        <a href="./register.html" class="btn btn-primary">Записаться</a>
+                        <a href="./contacts.html" class="btn btn-outline-white">расписание</a>
+                    </div>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-nav-column">
+                        <h4 class="footer-nav-title">разделы</h4>
+                        <a href="./index.html" class="footer-link">Главная</a>
+                        <a href="./services.html" class="footer-link">Услуги</a>
+                        <a href="./index.html#memberships" class="footer-link">Абонементы</a>
+                        <a href="./index.html#news" class="footer-link">Новости</a>
+                    </div>
+                    <div class="footer-nav-column">
+                        <h4 class="footer-nav-title">помощь</h4>
+                        <a href="./contacts.html" class="footer-link">Контакты</a>
+                        <a href="./contacts.html" class="footer-link">Как добраться</a>
+                        <a href="#" class="footer-link">Правила посещения</a>
+                        <a href="#" class="footer-link">Политика<br>конфиденциальности</a>
+                    </div>
+                </div>
+                <div class="footer-contact">
+                    <h4 class="footer-nav-title">связь</h4>
+                    <div class="footer-contact-cards">
+                        <div class="footer-contact-card">
+                            <p class="footer-contact-label">Телефон:</p>
+                            <p class="footer-contact-value">+7 (34675) 3-86-36</p>
+                        </div>
+                        <div class="footer-contact-card">
+                            <p class="footer-contact-label">Адрес:</p>
+                            <p class="footer-contact-value">г. Советский, ул.Юности, 12</p>
+                        </div>
+                        <div class="footer-contact-card">
+                            <p class="footer-contact-label">Время работы:</p>
+                            <p class="footer-contact-value">09:00-22:00</p>
+                        </div>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon">
+                            <img src="assets/images/logo_vk.png" alt="VK">
+                        </a>
+                        <a href="#" class="social-icon">
+                            <img src="assets/images/logo_max.png" alt="Max">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>2025 ФОК "Олимп"</p>
+                <p>Пользовательское соглашение</p>
+                <p>Политика</p>
+                <p>Контакты</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/gto.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ФОК "Олимп" - Регистрация</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="register">
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="./index.html">
+                    <img src="assets/images/logo.png" alt="Олимп">
+                </a>
+            </div>
+            <nav class="nav-menu">
+                <a href="./index.html" class="nav-link">Главная</a>
+                <a href="./about.html" class="nav-link">О нас</a>
+                <a href="./services.html" class="nav-link">Услуги</a>
+                <a href="./gto.html" class="nav-link">ГТО</a>
+                <a href="./contacts.html" class="nav-link">Контакты</a>
+            </nav>
+            <div class="header-buttons">
+                <a href="./login.html" class="btn btn-outline">Войти</a>
+                <a href="./register.html" class="btn btn-primary">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Registration Intro -->
+        <section class="register-intro">
+            <div class="container">
+                <h1 class="register-title">Создать аккаунт</h1>
+                <p class="register-subtitle">Регистрация для доступа к бронированию и истории посещений</p>
+            </div>
+        </section>
+
+        <!-- Registration Form -->
+        <section class="register-form-section">
+            <div class="container">
+                <div class="register-card">
+                    <form class="register-form" id="registerForm" novalidate>
+                        <!-- Name Row -->
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="firstName" class="form-label">Имя</label>
+                                <input 
+                                    type="text" 
+                                    id="firstName" 
+                                    name="firstName" 
+                                    class="form-input" 
+                                    required
+                                    autocomplete="given-name"
+                                >
+                                <span class="form-error" id="firstNameError"></span>
+                            </div>
+                            <div class="form-field">
+                                <label for="lastName" class="form-label">Фамилия</label>
+                                <input 
+                                    type="text" 
+                                    id="lastName" 
+                                    name="lastName" 
+                                    class="form-input" 
+                                    required
+                                    autocomplete="family-name"
+                                >
+                                <span class="form-error" id="lastNameError"></span>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-field form-field-full">
+                            <label for="email" class="form-label">Электронная почта</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                class="form-input" 
+                                required
+                                autocomplete="email"
+                            >
+                            <span class="form-error" id="emailError"></span>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="form-field form-field-full">
+                            <label for="phone" class="form-label">Телефон</label>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone" 
+                                class="form-input" 
+                                required
+                                autocomplete="tel"
+                                placeholder="+7 (___) ___-__-__"
+                            >
+                            <span class="form-error" id="phoneError"></span>
+                        </div>
+
+                        <!-- Password Row -->
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="password" class="form-label">Пароль</label>
+                                <div class="form-input-wrapper">
+                                    <input 
+                                        type="password" 
+                                        id="password" 
+                                        name="password" 
+                                        class="form-input form-input-password" 
+                                        required
+                                        autocomplete="new-password"
+                                    >
+                                    <button 
+                                        type="button" 
+                                        class="password-toggle" 
+                                        id="passwordToggle"
+                                        aria-label="Показать пароль"
+                                    >
+                                        <img src="assets/images/icon_vision.png" alt="" class="password-toggle-icon">
+                                    </button>
+                                </div>
+                                <p class="form-hint">Минимум 8 имволов, 1 цифра</p>
+                                <span class="form-error" id="passwordError"></span>
+                            </div>
+                            <div class="form-field">
+                                <label for="confirmPassword" class="form-label">Подтвердите пароль</label>
+                                <div class="form-input-wrapper">
+                                    <input 
+                                        type="password" 
+                                        id="confirmPassword" 
+                                        name="confirmPassword" 
+                                        class="form-input form-input-password" 
+                                        required
+                                        autocomplete="new-password"
+                                    >
+                                    <button 
+                                        type="button" 
+                                        class="password-toggle" 
+                                        id="confirmPasswordToggle"
+                                        aria-label="Показать пароль"
+                                    >
+                                        <img src="assets/images/icon_vision.png" alt="" class="password-toggle-icon">
+                                    </button>
+                                </div>
+                                <span class="form-error" id="confirmPasswordError"></span>
+                            </div>
+                        </div>
+
+                        <!-- Checkboxes -->
+                        <div class="form-checkboxes">
+                            <label class="form-checkbox">
+                                <input 
+                                    type="checkbox" 
+                                    id="agreement" 
+                                    name="agreement" 
+                                    required
+                                >
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-label">Согласен на обработку персональных данных</span>
+                            </label>
+                            <label class="form-checkbox">
+                                <input 
+                                    type="checkbox" 
+                                    id="notifications" 
+                                    name="notifications"
+                                >
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-label">Получать уведомления о расписании</span>
+                            </label>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">
+                            Зарегистрироваться
+                        </button>
+
+                        <!-- Login Link -->
+                        <div class="register-login-link">
+                            <span>Уже есть аккаунт?</span>
+                            <a href="login.html" class="register-login-link-text">Войти</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <img src="assets/images/Footer Logo.png" alt="Олимп">
+                    </div>
+                    <div class="footer-description">
+                        <p>Физкультурно-оздоровительный комплекс города Советский. Тренировки и занятия по расписанию - в удобном формате.</p>
+                    </div>
+                    <div class="footer-actions">
+                        <a href="./register.html" class="btn btn-primary">Записаться</a>
+                        <a href="./contacts.html" class="btn btn-outline-white">расписание</a>
+                    </div>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-nav-column">
+                        <h4 class="footer-nav-title">разделы</h4>
+                        <a href="./index.html" class="footer-link">Главная</a>
+                        <a href="./services.html" class="footer-link">Услуги</a>
+                        <a href="./index.html#memberships" class="footer-link">Абонементы</a>
+                        <a href="./index.html#news" class="footer-link">Новости</a>
+                    </div>
+                    <div class="footer-nav-column">
+                        <h4 class="footer-nav-title">помощь</h4>
+                        <a href="./contacts.html" class="footer-link">Контакты</a>
+                        <a href="./contacts.html" class="footer-link">Как добраться</a>
+                        <a href="#" class="footer-link">Правила посещения</a>
+                        <a href="#" class="footer-link">Политика<br>конфиденциальности</a>
+                    </div>
+                </div>
+                <div class="footer-contact">
+                    <h4 class="footer-nav-title">связь</h4>
+                    <div class="footer-contact-cards">
+                        <div class="footer-contact-card">
+                            <p class="footer-contact-label">Телефон:</p>
+                            <p class="footer-contact-value">+7 (34675) 3-86-36</p>
+                        </div>
+                        <div class="footer-contact-card">
+                            <p class="footer-contact-label">Адрес:</p>
+                            <p class="footer-contact-value">г. Советский, ул.Юности, 12</p>
+                        </div>
+                        <div class="footer-contact-card">
+                            <p class="footer-contact-label">Время работы:</p>
+                            <p class="footer-contact-value">09:00-22:00</p>
+                        </div>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon">
+                            <img src="assets/images/logo_vk.png" alt="VK">
+                        </a>
+                        <a href="#" class="social-icon">
+                            <img src="assets/images/logo_max.png" alt="Max">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>2025 ФОК "Олимп"</p>
+                <p>Пользовательское соглашение</p>
+                <p>Политика</p>
+                <p>Контакты</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/register.js"></script>
+</body>
+</html>
+

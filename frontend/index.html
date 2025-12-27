@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ФОК "Олимп" - Главная страница</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="index">
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="Олимп">
+            </div>
+            <nav class="nav-menu">
+                <a href="./index.html" class="nav-link">Главная</a>
+                <a href="./about.html" class="nav-link">О нас</a>
+                <a href="./services.html" class="nav-link">Услуги</a>
+                <a href="./gto.html" class="nav-link">ГТО</a>
+                <a href="./contacts.html" class="nav-link">Контакты</a>
+            </nav>
+            <div class="header-buttons">
+                <a href="./login.html" class="btn btn-outline">Войти</a>
+                <a href="./register.html" class="btn btn-primary">Регистрация</a>
+                <a href="./dashboard.html" class="btn btn-primary" style="display: none;" id="dashboardLink">Личный кабинет</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">«Олимп» — пространство здоровья и активной жизни для всех</h1>
+                    <p class="hero-description">Современный спортивный комплекс в совестком: тренажерный зал, групповые занятия и секции</p>
+                    <div class="hero-buttons">
+                        <a href="./about.html" class="btn btn-primary">Узнать больше</a>
+                        <a href="./services.html" class="btn btn-outline-teal">Посмотреть услуги</a>
+                    </div>
+                </div>
+                <div class="hero-widget">
+                    <div class="widget-item">
+                        <p class="widget-label">Время работы:</p>
+                        <p class="widget-value">09:00-22:00</p>
+                    </div>
+                    <div class="widget-item">
+                        <p class="widget-label">Адрес:</p>
+                        <p class="widget-value">г. Совесткий, ул. Юности 12</p>
+                    </div>
+                    <div class="widget-item">
+                        <p class="widget-label">Телефон</p>
+                        <p class="widget-value">+7 (34675) 3-86-36</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="services-header">
+                <h2 class="section-title">Услуги</h2>
+                <p class="section-subtitle">Основные направления комплекса</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="assets/images/image-Photoroom (11) 1.png" alt="Тренажерный зал" class="service-icon">
+                    <h3 class="service-title">Тренажерный зал</h3>
+                    <p class="service-description">Силовые и кардио<br>тренировки</p>
+                    <p class="service-price">от 100 рублей</p>
+                    <a href="./services.html" class="service-link">Подробнее</a>
+                </div>
+                <div class="service-card">
+                    <img src="assets/images/image-Photoroom (10) 1.png" alt="Групповые занятия" class="service-icon">
+                    <h3 class="service-title">Групповые занятия</h3>
+                    <p class="service-description">Фитнес и общей<br>физической подготовки</p>
+                    <p class="service-price">от 125 рублей</p>
+                    <a href="./services.html" class="service-link">Подробнее</a>
+                </div>
+                <div class="service-card">
+                    <img src="assets/images/image-Photoroom (12) 1.png" alt="Детские секции" class="service-icon">
+                    <h3 class="service-title">Детские секции</h3>
+                    <p class="service-description">Для разных возрастов</p>
+                    <p class="service-price">от 100 рублей</p>
+                    <a href="./services.html" class="service-link">Подробнее</a>
+                </div>
+                <div class="service-card">
+                    <img src="assets/images/image-Photoroom (13) 1.png" alt="Аренда зала" class="service-icon">
+                    <h3 class="service-title">Аренда зала</h3>
+                    <p class="service-description">Почасовая аренда</p>
+                    <p class="service-price">от 900 рублей</p>
+                    <a href="./services.html" class="service-link">Подробнее</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Section -->
+    <section class="membership" id="memberships">
+        <div class="container">
+            <div class="membership-card">
+                <h2 class="membership-title">Абонементы и оплата</h2>
+                <p class="membership-subtitle">Онлайн-оплата (демо)</p>
+                <a href="./dashboard.html" class="btn btn-primary btn-large">Оплатить</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news" id ="news">
+        <div class="container">
+            <h2 class="section-title">Новости</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <h3 class="news-title">Изменение расписания</h3>
+                    <p class="news-date">12.09.2025</p>
+                    <p class="news-description">Актуализировано расписание занятий.</p>
+                </div>
+                <div class="news-card">
+                    <h3 class="news-title">Набор в секции</h3>
+                    <p class="news-date">05.09.2025</p>
+                    <p class="news-description">Открыт набор в детские группы.</p>
+                </div>
+                <div class="news-card">
+                    <h3 class="news-title">Технические работы</h3>
+                    <p class="news-date">28.08.2025</p>
+                    <p class="news-description">Кратковременное ограничение доступа.</p>
+                </div>
+            </div>
+            <div class="news-button-wrapper">
+                <a href="https://vk.com/olimpsovsport" class="btn btn-primary" target="_blank">Все новости </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <div class="contact-card">
+                <h2 class="contact-title">Контакты</h2>
+                <p class="contact-subtitle">Свяжитесь с нами или приезжайте в комплекс</p>
+                <div class="contact-fields">
+                    <div class="contact-field">
+                        <img src="assets/images/icon_map.png" alt="Адрес" class="contact-icon">
+                        <div class="contact-info">
+                            <p class="contact-label">Адрес:</p>
+                            <p class="contact-value">г. Советский, ул.Юности, 12</p>
+                        </div>
+                    </div>
+                    <div class="contact-field">
+                        <img src="assets/images/icon_telephone.png" alt="Телефон" class="contact-icon">
+                        <div class="contact-info">
+                            <p class="contact-label">Телефон:</p>
+                            <p class="contact-value">+7 (34675) 3-86-36</p>
+                        </div>
+                    </div>
+                    <div class="contact-field">
+                        <img src="assets/images/icon_clock.png" alt="Время работы" class="contact-icon">
+                        <div class="contact-info">
+                            <p class="contact-label">Время работы:</p>
+                            <p class="contact-value">08:00-22:00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-buttons">
+                    <a href="./contacts.html" class="btn btn-primary">Как добраться</a>
+                    <a href="https://vk.me/olimpsovsport" class="btn btn-outline" target="_blank">Написать</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <img src="assets/images/Footer Logo.png" alt="Олимп">
+                    </div>
+                    <div class="footer-description">
+                        <p>Физкультурно-оздоровительный комплекс города Советский. Тренировки и занятия по расписанию - в удобном формате.</p>
+                    </div>
+                    <div class="footer-actions">
+                        <a href="./register.html" class="btn btn-primary">Записаться</a>
+                        <a href="./contacts.html" class="btn btn-outline-white">расписание</a>
+                    </div>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-nav-column">
+                        <h4 class="footer-nav-title">разделы</h4>
+                        <a href="./index.html" class="footer-link">Главная</a>
+                        <a href="./services.html" class="footer-link">Услуги</a>
+                        <a href="./index.html#memberships" class="footer-link">Абонементы</a>
+                        <a href="./index.html#news" class="footer-link">Новости</a>
+                    </div>
+                    <div class="footer-nav-column">
+                        <h4 class="footer-nav-title">помощь</h4>
+                        <a href="./contacts.html" class="footer-link">Контакты</a>
+                        <a href="./contacts.html" class="footer-link">Как добраться</a>
+                        <a href="./contacts.html" class="footer-link">Правила посещения</a>
+                        <a href="#" class="footer-link">Политика<br>конфиденциальности</a>
+                    </div>
+                </div>
+                <div class="footer-contact">
+                    <h4 class="footer-nav-title">связь</h4>
+                    <div class="footer-contact-cards">
+                        <div class="footer-contact-card">
+                            <p class="footer-contact-label">Телефон:</p>
+                            <p class="footer-contact-value">+7 (34675) 3-86-36</p>
+                        </div>
+                        <div class="footer-contact-card">
+                            <p class="footer-contact-label">Адрес:</p>
+                            <p class="footer-contact-value">г. Советский, ул.Юности, 12</p>
+                        </div>
+                        <div class="footer-contact-card">
+                            <p class="footer-contact-label">Время работы:</p>
+                            <p class="footer-contact-value">09:00-22:00</p>
+                        </div>
+                    </div>
+                    <div class="footer-social">
+                        <a href="https://vk.me/olimpsovsport" class="social-icon">
+                            <img src="assets/images/logo_vk.png" alt="VK">
+                        </a>
+                        <a href="#" class="social-icon">
+                            <img src="assets/images/logo_max.png" alt="Max" >
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p><a href="./index.html">2025 ФОК "Олимп"</a></p>
+                <p>Пользовательское соглашение</p>
+                <p>Политика</p>
+                <p><a href="./contacts.html">Контакты</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+
+
+

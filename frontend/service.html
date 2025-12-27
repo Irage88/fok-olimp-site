@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">ФОК "Олимп" - Услуга</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="service">
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="./index.html">
+                    <img src="assets/images/logo.png" alt="Олимп">
+                </a>
+            </div>
+            <nav class="nav-menu">
+                <a href="./index.html" class="nav-link">Главная</a>
+                <a href="./about.html" class="nav-link">О нас</a>
+                <a href="./services.html" class="nav-link">Услуги</a>
+                <a href="./gto.html" class="nav-link">ГТО</a>
+                <a href="./contacts.html" class="nav-link">Контакты</a>
+            </nav>
+            <div class="header-buttons">
+                <a href="./login.html" class="btn btn-outline">Войти</a>
+                <a href="./register.html" class="btn btn-primary">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Service Gallery Section -->
+        <section class="service-gallery">
+            <div class="container">
+                <div class="service-gallery-grid">
+                    <div class="service-image-wrapper">
+                        <img src="assets/images/Image_peredel.png" alt="" id="serviceImage" class="service-image">
+                    </div>
+
+                    <!-- Booking Sidebar -->
+                    <div class="service-booking">
+                        <div class="booking-header">
+                            <h2 class="booking-title">Бронирование</h2>
+                            <p class="booking-price" id="servicePrice">от 100 рублей</p>
+                        </div>
+                        <form class="booking-form" id="bookingForm" novalidate>
+                            <div class="form-field">
+                                <label for="bookingDate" class="form-label">Дата</label>
+                                <div class="form-input-wrapper">
+                                    <input 
+                                        type="text" 
+                                        id="bookingDate" 
+                                        name="date" 
+                                        class="form-input" 
+                                        placeholder="дд.мм.гг"
+                                        required
+                                    >
+                                    <button type="button" class="date-picker-icon" aria-label="Выбрать дату">
+                                        <img src="assets/images/icon_event.png" alt="">
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-field">
+                                <label for="bookingTime" class="form-label">Время</label>
+                                <input 
+                                    type="text" 
+                                    id="bookingTime" 
+                                    name="time" 
+                                    class="form-input" 
+                                    placeholder="10:00"
+                                    required
+                                >
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-booking-submit" id="bookingSubmitBtn">
+                                Забронировать
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Description Section -->
+        <section class="service-description">
+            <div class="container">
+                <div class="service-header">
+                    <h1 class="service-title" id="serviceTitle">Тренажёрный зал</h1>
+                    <p class="service-price" id="servicePriceHeader">от 100 рублей</p>
+                </div>
+
+                <div class="service-content">
+                    <div class="service-description-block">
+                        <h2 class="service-section-title">Описание</h2>
+                        <p class="service-description-text" id="serviceDescription">
+                            Тренажёрный зал оснащён оборудованием для силовых и общефизических занятий. Здесь можно заниматься самостоятельно или под наблюдением тренера, соблюдая комфортную нагрузку и технику выполнения упражнений.
+                        </p>
+                    </div>
+
+                    <div class="service-details">
+                        <h2 class="service-section-title">Детали и услуги</h2>
+                        <div class="service-details-list">
+                            <div class="service-detail-item">
+                                <span class="detail-label">Продолжительность</span>
+                                <span class="detail-value" id="serviceDuration">1 час</span>
+                            </div>
+                            <div class="service-detail-item">
+                                <span class="detail-label">Формат</span>
+                                <span class="detail-value" id="serviceFormat">Групповое</span>
+                            </div>
+                            <div class="service-detail-item">
+                                <span class="detail-label">Возраст</span>
+                                <span class="detail-value" id="serviceAge">от 14 лет</span>
+                            </div>
+                            <div class="service-detail-item">
+                                <span class="detail-label">Уровень</span>
+                                <span class="detail-value" id="serviceLevel">Любой</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <img src="assets/images/Footer Logo.png" alt="Олимп">
+                    </div>
+                    <div class="footer-description">
+                        <p>Физкультурно-оздоровительный комплекс города Советский. Тренировки и занятия по расписанию - в удобном формате.</p>
+                    </div>
+                    <div class="footer-actions">
+                        <a href="./register.html" class="btn btn-primary">Записаться</a>
+                        <a href="./contacts.html" class="btn btn-outline-white">расписание</a>
+                    </div>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-nav-column">
+                        <h4 class="footer-nav-title">разделы</h4>
+                        <a href="./index.html" class="footer-link">Главная</a>
+                        <a href="./services.html" class="footer-link">Услуги</a>
+                        <a href="./index.html#memberships" class="footer-link">Абонементы</a>
+                        <a href="./index.html#news" class="footer-link">Новости</a>
+                    </div>
+                    <div class="footer-nav-column">
+                        <h4 class="footer-nav-title">помощь</h4>
+                        <a href="./contacts.html" class="footer-link">Контакты</a>
+                        <a href="./contacts.html" class="footer-link">Как добраться</a>
+                        <a href="#" class="footer-link">Правила посещения</a>
+                        <a href="#" class="footer-link">Политика<br>конфиденциальности</a>
+                    </div>
+                </div>
+                <div class="footer-contact">
+                    <h4 class="footer-nav-title">связь</h4>
+                    <div class="footer-contact-cards">
+                        <div class="footer-contact-card">
+                            <p class="footer-contact-label">Телефон:</p>
+                            <p class="footer-contact-value">+7 (34675) 3-86-36</p>
+                        </div>
+                        <div class="footer-contact-card">
+                            <p class="footer-contact-label">Адрес:</p>
+                            <p class="footer-contact-value">г. Советский, ул.Юности, 12</p>
+                        </div>
+                        <div class="footer-contact-card">
+                            <p class="footer-contact-label">Время работы:</p>
+                            <p class="footer-contact-value">09:00-22:00</p>
+                        </div>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon">
+                            <img src="assets/images/logo_vk.png" alt="VK">
+                        </a>
+                        <a href="#" class="social-icon">
+                            <img src="assets/images/logo_max.png" alt="Max">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>2025 ФОК "Олимп"</p>
+                <p>Пользовательское соглашение</p>
+                <p>Политика</p>
+                <p>Контакты</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Payment Modal -->
+    <div class="payment-modal" id="paymentModal" role="dialog" aria-labelledby="paymentModalTitle" aria-hidden="true">
+        <div class="payment-modal-backdrop" id="paymentModalBackdrop"></div>
+        <div class="payment-modal-content">
+            <button class="payment-modal-close" id="paymentModalClose" aria-label="Закрыть модальное окно">
+                <span>&times;</span>
+            </button>
+            
+            <div class="payment-modal-header">
+                <h2 class="payment-modal-title" id="paymentModalTitle">Оплата</h2>
+                <p class="payment-modal-description">Проверьте детали заказа и заполните данные карты</p>
+            </div>
+
+            <div class="payment-modal-body">
+                <div class="payment-booking-details">
+                    <h3 class="payment-booking-title">Вы бронируете</h3>
+                    <div class="payment-booking-grid">
+                        <div class="payment-booking-row">
+                            <span class="payment-booking-label">Услуга:</span>
+                            <span class="payment-booking-value" id="paymentServiceName">Тренажёрный зал</span>
+                        </div>
+                        <div class="payment-booking-row">
+                            <span class="payment-booking-label">Цена:</span>
+                            <span class="payment-booking-value" id="paymentServicePrice">100 рублей</span>
+                        </div>
+                        <div class="payment-booking-row">
+                            <span class="payment-booking-label">Дата:</span>
+                            <span class="payment-booking-value" id="paymentServiceDate">Не выбрано</span>
+                        </div>
+                        <div class="payment-booking-row">
+                            <span class="payment-booking-label">Время работы:</span>
+                            <span class="payment-booking-value" id="paymentServiceTime">Не выбрано</span>
+                        </div>
+                    </div>
+                    <div class="payment-total">
+                        <span class="payment-total-label">Итого к оплате:</span>
+                        <span class="payment-total-value" id="paymentTotalAmount">100 рублей</span>
+                    </div>
+                </div>
+
+                <form class="payment-form" id="paymentForm" novalidate>
+                    <div class="payment-form-field payment-form-field-full">
+                        <label for="paymentCardNumber" class="payment-form-label">Номер карты:</label>
+                        <input 
+                            type="text" 
+                            id="paymentCardNumber" 
+                            name="cardNumber" 
+                            class="payment-form-input" 
+                            placeholder="0000 0000 0000 0000"
+                            maxlength="19"
+                            required
+                        >
+                        <span class="payment-form-error" id="cardNumberError"></span>
+                    </div>
+                    <div class="payment-form-row">
+                        <div class="payment-form-field">
+                            <label for="paymentCardExpiry" class="payment-form-label">Срок:</label>
+                            <input 
+                                type="text" 
+                                id="paymentCardExpiry" 
+                                name="cardExpiry" 
+                                class="payment-form-input" 
+                                placeholder="ММ/ГГ"
+                                maxlength="5"
+                                required
+                            >
+                            <span class="payment-form-error" id="cardExpiryError"></span>
+                        </div>
+                        <div class="payment-form-field">
+                            <label for="paymentCardCVV" class="payment-form-label">CVV:</label>
+                            <input 
+                                type="text" 
+                                id="paymentCardCVV" 
+                                name="cardCVV" 
+                                class="payment-form-input" 
+                                placeholder="000"
+                                maxlength="3"
+                                required
+                            >
+                            <span class="payment-form-error" id="cardCVVError"></span>
+                        </div>
+                    </div>
+                    <div class="payment-form-field payment-form-field-full">
+                        <label for="paymentCardholder" class="payment-form-label">Имя держателя:</label>
+                        <input 
+                            type="text" 
+                            id="paymentCardholder" 
+                            name="cardholder" 
+                            class="payment-form-input" 
+                            placeholder="IVAN IVANOV"
+                            required
+                        >
+                        <span class="payment-form-error" id="cardholderError"></span>
+                    </div>
+                </form>
+            </div>
+
+            <div class="payment-modal-actions">
+                <button type="submit" form="paymentForm" class="btn btn-primary" id="paymentSubmitBtn">
+                    Оплатить
+                </button>
+                <button type="button" class="btn btn-outline-teal" id="paymentCancelBtn">
+                    Отмена
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="successToast" role="alert" aria-live="polite" aria-atomic="true">
+        <div class="toast-content">
+            <span class="toast-icon">✓</span>
+            <span class="toast-message">Оплата успешно выполнена!</span>
+        </div>
+    </div>
+
+    <div id="serviceNotFound" style="display: none; padding: 100px 0;">
+        <section class="service-description">
+            <div class="container">
+                <div class="service-header">
+                    <h1 class="service-title">Услуга не найдена</h1>
+                    <p class="service-description-text">Запрашиваемая услуга не существует. Пожалуйста, вернитесь на <a href="services.html">страницу услуг</a>.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/servicesData.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/service.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ФОК "Олимп" - Контакты</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" defer></script>
+</head>
+<body data-page="contacts">
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="./index.html">
+                    <img src="assets/images/logo.png" alt="Олимп">
+                </a>
+            </div>
+            <nav class="nav-menu">
+                <a href="./index.html" class="nav-link">Главная</a>
+                <a href="./about.html" class="nav-link">О нас</a>
+                <a href="./services.html" class="nav-link">Услуги</a>
+                <a href="./gto.html" class="nav-link">ГТО</a>
+                <a href="./contacts.html" class="nav-link">Контакты</a>
+            </nav>
+            <div class="header-buttons">
+                <a href="./login.html" class="btn btn-outline">Войти</a>
+                <a href="./register.html" class="btn btn-primary">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Welcoming Section -->
+        <section class="contacts-welcoming">
+            <div class="container">
+                <h1 class="contacts-welcoming-title">Мы на связи каждый день</h1>
+                <p class="contacts-welcoming-description">
+                    Ответим на вопросы, подскажем по услугам и поможем записаться в «Олимп»
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact Info Section -->
+        <section class="contacts-info">
+            <div class="container">
+                <div class="contacts-info-grid">
+                    <!-- Left Column: Contact Cards -->
+                    <div class="contacts-cards12">
+                        <div class="contact-card12 contacts-card12">
+                            <div class="contact-card-icon">
+                                <img src="assets/images/icon_phone.png" alt="Телефон">
+                            </div>
+                            <div class="contact-card-content12">
+                                <p class="contact-card-title">Телефон:</p>
+                                <p class="contact-card-value">3-26-25</p>
+                            </div>
+                        </div>
+                        <div class="contact-card12">
+                            <div class="contact-card-icon">
+                                <img src="assets/images/icon_mail.png" alt="Email">
+                            </div>
+                            <div class="contact-card-content12">
+                                <p class="contact-card-title">Электронная почта:</p>
+                                <p class="contact-card-value">info@olimp-sov.ru</p>
+                            </div>
+                        </div>
+                        <div class="contact-card12">
+                            <div class="contact-card-icon">
+                                <img src="assets/images/icon_map_2.png" alt="Адрес">
+                            </div>
+                            <div class="contact-card-content12">
+                                <p class="contact-card-title">Адрес:</p>
+                                <p class="contact-card-value">г. Советский, ул.Юности, 12</p>
+                            </div>
+                        </div>
+                        <div class="contact-card12">
+                            <div class="contact-card-icon">
+                                <img src="assets/images/Clock_2.png" alt="Часы работы">
+                            </div>
+                            <div class="contact-card-content12">
+                                <p class="contact-card-title">Часы работы:</p>
+                                <p class="contact-card-value">09:00-22:00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Map Card -->
+                    <div class="contacts-map-card">
+                        <div class="map-badges">
+                            <span class="map-badge">Парковка</span>
+                            <span class="map-badge">Вход</span>
+                            <span class="map-badge">Безопасность</span>
+                        </div>
+                        <div id="yandex-map" class="map-container"></div>
+                        <a href="https://yandex.ru/maps/-/CLD2UZ7a" target="_blank" class="btn btn-primary btn-map-route">
+                            Открыть маршрут
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feedback Form Section -->
+        <section class="contacts-feedback">
+            <div class="container">
+                <h2 class="section-title">Обратная связь</h2>
+                <div class="feedback-form-card">
+                    <form class="feedback-form" id="feedbackForm" novalidate>
+                        <div class="feedback-form-row">
+                            <div class="form-field">
+                                <label for="feedbackName" class="form-label">Имя</label>
+                                <input 
+                                    type="text" 
+                                    id="feedbackName" 
+                                    name="name" 
+                                    class="form-input" 
+                                    required
+                                >
+                                <span class="form-error" id="feedbackNameError"></span>
+                            </div>
+                            <div class="form-field">
+                                <label for="feedbackContact" class="form-label">Телефон или электронная почта</label>
+                                <input 
+                                    type="text" 
+                                    id="feedbackContact" 
+                                    name="contact" 
+                                    class="form-input" 
+                                    required
+                                >
+                                <span class="form-error" id="feedbackContactError"></span>
+                            </div>
+                        </div>
+                        <div class="form-field form-field-full">
+                            <label for="feedbackMessage" class="form-label">Сообщение</label>
+                            <textarea 
+                                id="feedbackMessage" 
+                                name="message" 
+                                class="form-input form-textarea" 
+                                rows="8"
+                                required
+                            ></textarea>
+                            <span class="form-error" id="feedbackMessageError"></span>
+                        </div>
+                        <div class="feedback-form-consent">
+                            <label class="form-checkbox">
+                                <input 
+                                    type="checkbox" 
+                                    id="feedbackConsent" 
+                                    name="consent"
+                                    required
+                                >
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-label">Согласен на обработку персональных данных</span>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-feedback-submit" id="feedbackSubmitBtn">
+                            Отправить
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Find Section -->
+        <section class="contacts-how-to-find">
+            <div class="container">
+                <h2 class="section-title">Как нас найти</h2>
+                <div class="how-to-find-grid">
+                    <div class="how-to-find-card">
+                        <div class="how-to-find-icon">
+                            <img src="assets/images/icon_map_2.png" alt="Адрес">
+                        </div>
+                        <p class="how-to-find-title">Адрес:</p>
+                        <p class="how-to-find-description">г. Советский, ул.Юности, 12</p>
+                    </div>
+                    <div class="how-to-find-card">
+                        <div class="how-to-find-icon">
+                            <img src="assets/images/card.png" alt="Ориентир">
+                        </div>
+                        <p class="how-to-find-title">Ориентир:</p>
+                        <p class="how-to-find-description">Рядом с жилым микрорайоном и парковкой</p>
+                    </div>
+                    <div class="how-to-find-card">
+                        <div class="how-to-find-icon">
+                            <img src="assets/images/door.png" alt="Вход">
+                        </div>
+                        <p class="how-to-find-title">Вход:</p>
+                        <p class="how-to-find-description">Центральный вход со стороны улицы</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <img src="assets/images/Footer Logo.png" alt="Олимп">
+                    </div>
+                    <div class="footer-description">
+                        <p>Физкультурно-оздоровительный комплекс города Советский. Тренировки и занятия по расписанию - в удобном формате.</p>
+                    </div>
+                    <div class="footer-actions">
+                        <a href="./register.html" class="btn btn-primary">Записаться</a>
+                        <a href="./contacts.html" class="btn btn-outline-white">расписание</a>
+                    </div>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-nav-column">
+                        <h4 class="footer-nav-title">разделы</h4>
+                        <a href="./index.html" class="footer-link">Главная</a>
+                        <a href="./services.html" class="footer-link">Услуги</a>
+                        <a href="./index.html#memberships" class="footer-link">Абонементы</a>
+                        <a href="./index.html#news" class="footer-link">Новости</a>
+                    </div>
+                    <div class="footer-nav-column">
+                        <h4 class="footer-nav-title">помощь</h4>
+                        <a href="./contacts.html" class="footer-link">Контакты</a>
+                        <a href="./contacts.html" class="footer-link">Как добраться</a>
+                        <a href="#" class="footer-link">Правила посещения</a>
+                        <a href="#" class="footer-link">Политика<br>конфиденциальности</a>
+                    </div>
+                </div>
+                <div class="footer-contact">
+                    <h4 class="footer-nav-title">связь</h4>
+                    <div class="footer-contact-cards">
+                        <div class="footer-contact-card">
+                            <p class="footer-contact-label">Телефон:</p>
+                            <p class="footer-contact-value">+7 (34675) 3-86-36</p>
+                        </div>
+                        <div class="footer-contact-card">
+                            <p class="footer-contact-label">Адрес:</p>
+                            <p class="footer-contact-value">г. Советский, ул.Юности, 12</p>
+                        </div>
+                        <div class="footer-contact-card">
+                            <p class="footer-contact-label">Время работы:</p>
+                            <p class="footer-contact-value">09:00-22:00</p>
+                        </div>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon">
+                            <img src="assets/images/logo_vk.png" alt="VK">
+                        </a>
+                        <a href="#" class="social-icon">
+                            <img src="assets/images/logo_max.png" alt="Max">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>2025 ФОК "Олимп"</p>
+                <p>Пользовательское соглашение</p>
+                <p>Политика</p>
+                <p>Контакты</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/contacts.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ФОК "Олимп" - Вход</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="login">
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="./index.html">
+                    <img src="assets/images/logo.png" alt="Олимп">
+                </a>
+            </div>
+            <nav class="nav-menu">
+                <a href="./index.html" class="nav-link">Главная</a>
+                <a href="./about.html" class="nav-link">О нас</a>
+                <a href="./services.html" class="nav-link">Услуги</a>
+                <a href="./gto.html" class="nav-link">ГТО</a>
+                <a href="./contacts.html" class="nav-link">Контакты</a>
+            </nav>
+            <div class="header-buttons">
+                <a href="./login.html" class="btn btn-outline">Войти</a>
+                <a href="./register.html" class="btn btn-primary">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Login Intro -->
+        <section class="login-intro">
+            <div class="container">
+                <h1 class="login-title">Вход в личный кабинет</h1>
+            </div>
+        </section>
+
+        <!-- Login Form -->
+        <section class="login-form-section">
+            <div class="container">
+                <div class="login-card">
+                    <form class="login-form" id="loginForm" novalidate>
+                        <!-- Email -->
+                        <div class="form-field form-field-full">
+                            <label for="email" class="form-label">Электронная почта</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                class="form-input" 
+                                required
+                                autocomplete="email"
+                            >
+                            <span class="form-error" id="emailError"></span>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-field form-field-full">
+                            <label for="password" class="form-label">Пароль</label>
+                            <div class="form-input-wrapper">
+                                <input 
+                                    type="password" 
+                                    id="password" 
+                                    name="password" 
+                                    class="form-input form-input-password" 
+                                    required
+                                    autocomplete="current-password"
+                                >
+                                <button 
+                                    type="button" 
+                                    class="password-toggle" 
+                                    id="passwordToggle"
+                                    aria-label="Показать пароль"
+                                >
+                                    <img src="assets/images/icon_vision.png" alt="" class="password-toggle-icon">
+                                </button>
+                            </div>
+                            <span class="form-error" id="passwordError"></span>
+                        </div>
+
+                        <!-- Remember Me & Forgot Password -->
+                        <div class="login-form-options">
+                            <label class="form-checkbox">
+                                <input 
+                                    type="checkbox" 
+                                    id="rememberMe" 
+                                    name="rememberMe"
+                                >
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-label">Запомнить меня</span>
+                            </label>
+                            <a href="#" class="forgot-password-link">Забыли пароль?</a>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">
+                            Войти
+                        </button>
+
+                        <!-- Registration Link -->
+                        <div class="login-register-link">
+                            <span>Нет аккаунта?</span>
+                            <a href="register.html" class="login-register-link-text">Зарегистрируйтесь</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <img src="assets/images/Footer Logo.png" alt="Олимп">
+                    </div>
+                    <div class="footer-description">
+                        <p>Физкультурно-оздоровительный комплекс города Советский. Тренировки и занятия по расписанию - в удобном формате.</p>
+                    </div>
+                    <div class="footer-actions">
+                        <a href="./register.html" class="btn btn-primary">Записаться</a>
+                        <a href="./contacts.html" class="btn btn-outline-white">расписание</a>
+                    </div>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-nav-column">
+                        <h4 class="footer-nav-title">разделы</h4>
+                        <a href="./index.html" class="footer-link">Главная</a>
+                        <a href="./services.html" class="footer-link">Услуги</a>
+                        <a href="./index.html#memberships" class="footer-link">Абонементы</a>
+                        <a href="./index.html#news" class="footer-link">Новости</a>
+                    </div>
+                    <div class="footer-nav-column">
+                        <h4 class="footer-nav-title">помощь</h4>
+                        <a href="./contacts.html" class="footer-link">Контакты</a>
+                        <a href="./contacts.html" class="footer-link">Как добраться</a>
+                        <a href="#" class="footer-link">Правила посещения</a>
+                        <a href="#" class="footer-link">Политика<br>конфиденциальности</a>
+                    </div>
+                </div>
+                <div class="footer-contact">
+                    <h4 class="footer-nav-title">связь</h4>
+                    <div class="footer-contact-cards">
+                        <div class="footer-contact-card">
+                            <p class="footer-contact-label">Телефон:</p>
+                            <p class="footer-contact-value">+7 (34675) 3-86-36</p>
+                        </div>
+                        <div class="footer-contact-card">
+                            <p class="footer-contact-label">Адрес:</p>
+                            <p class="footer-contact-value">г. Советский, ул.Юности, 12</p>
+                        </div>
+                        <div class="footer-contact-card">
+                            <p class="footer-contact-label">Время работы:</p>
+                            <p class="footer-contact-value">09:00-22:00</p>
+                        </div>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon">
+                            <img src="assets/images/logo_vk.png" alt="VK">
+                        </a>
+                        <a href="#" class="social-icon">
+                            <img src="assets/images/logo_max.png" alt="Max">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>2025 ФОК "Олимп"</p>
+                <p>Пользовательское соглашение</p>
+                <p>Политика</p>
+                <p>Контакты</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
+
+
