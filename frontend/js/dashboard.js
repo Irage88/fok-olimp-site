@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Load user data
     try {
         await loadUserData();
+        await loadNotifications();
     } catch (error) {
         console.error('Failed to load user data:', error);
         // If token is invalid, redirect to login
@@ -61,22 +62,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
     }
 
-    // Helper functions for per-user notifications
-    function getNotificationsKey() {
-        if (!currentUser) return 'notifications';
-        return currentUser.id ? `notifications_${currentUser.id}` : `notifications_${currentUser.email}`;
-    }
-
-    function loadNotifications() {
-        const key = getNotificationsKey();
-        const data = localStorage.getItem(key);
-        return data ? JSON.parse(data) : [];
-    }
-
-    function saveNotifications(notifications) {
-        const key = getNotificationsKey();
-        localStorage.setItem(key, JSON.stringify(notifications));
-    }
 
     // Update user name display
     function updateUserName() {
@@ -185,12 +170,52 @@ document.addEventListener('DOMContentLoaded', async function() {
             const paidBookings = bookings.filter(b => b.status === 'paid').length;
             paymentsCountEl.textContent = paidBookings;
 
-            // Notifications (per-user from localStorage)
-            const notifications = loadNotifications();
-            const newNotifications = notifications.filter(n => n.isNew === true).length;
-            newNotificationsCountEl.textContent = newNotifications;
+            // Notifications count (from API)
+            try {
+                const notificationsResponse = await fetch(`${window.API_BASE_URL}/api/notifications`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                if (notificationsResponse.ok) {
+                    const notificationsData = await notificationsResponse.json();
+                    const notifications = (notificationsData.success && notificationsData.data) ? notificationsData.data : [];
+                    const newNotifications = notifications.filter(n => !n.isRead).length;
+                    newNotificationsCountEl.textContent = newNotifications;
+                }
+            } catch (error) {
+                console.error('Failed to load notifications count:', error);
+            }
         } catch (error) {
             console.error('Failed to update overview:', error);
+        }
+    }
+
+    // Load notifications from API
+    let notificationsList = [];
+    
+    async function loadNotifications() {
+        const token = localStorage.getItem('token');
+        if (!token) return;
+        
+        try {
+            const response = await fetch(`${window.API_BASE_URL}/api/notifications`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            
+            if (!response.ok) {
+                throw new Error('Failed to load notifications');
+            }
+            
+            const data = await response.json();
+            notificationsList = (data.success && data.data) ? data.data : [];
+            renderNotifications();
+        } catch (error) {
+            console.error('Failed to load notifications:', error);
+            notificationsList = [];
+            renderNotifications();
         }
     }
 
@@ -199,65 +224,52 @@ document.addEventListener('DOMContentLoaded', async function() {
         // Always clear before rendering
         notificationsListEl.innerHTML = '';
         
-        const notifications = loadNotifications();
-        
-        // Debug log
-        console.log("Notifications key:", getNotificationsKey(), notifications.length);
-        
-        if (notifications.length === 0) {
+        if (notificationsList.length === 0) {
             notificationsListEl.innerHTML = '<p class="dashboard-empty-state">Нет уведомлений</p>';
             return;
         }
 
-        notificationsListEl.innerHTML = notifications.map(notification => {
+        notificationsListEl.innerHTML = notificationsList.map(notification => {
             const date = formatDate(notification.createdAt);
-            const isNew = notification.isNew === true;
+            const isUnread = !notification.isRead;
+            const titlePrefix = isUnread ? '● ' : '';
             
             return `
-                <div class="dashboard-notification ${isNew ? 'dashboard-notification-new' : ''}" data-id="${notification.id}">
+                <div class="dashboard-notification ${isUnread ? 'dashboard-notification-new' : ''}" data-id="${notification.id}">
                     <div class="dashboard-notification-info">
-                        <h3 class="dashboard-notification-title">${notification.title}</h3>
+                        <h3 class="dashboard-notification-title">${titlePrefix}${notification.title}</h3>
                         <p class="dashboard-notification-message">${notification.message}</p>
                         <p class="dashboard-notification-date">${date}</p>
                     </div>
-                    ${isNew ? '<div class="dashboard-notification-badge">новое</div>' : ''}
-                    ${isNew ? '<button class="dashboard-notification-mark-read" aria-label="Отметить как прочитанное">×</button>' : ''}
+                    ${isUnread ? '<div class="dashboard-notification-badge">новое</div>' : ''}
                 </div>
             `;
         }).join('');
-
-        // Add event listeners for mark as read buttons
-        const markReadButtons = notificationsListEl.querySelectorAll('.dashboard-notification-mark-read');
-        markReadButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const notificationId = this.closest('.dashboard-notification').dataset.id;
-                markNotificationAsRead(notificationId);
-            });
-        });
-    }
-
-    // Mark notification as read
-    function markNotificationAsRead(notificationId) {
-        const notifications = loadNotifications();
-        const notification = notifications.find(n => n.id === notificationId);
-        
-        if (notification) {
-            notification.isNew = false;
-            saveNotifications(notifications);
-            renderNotifications();
-            updateOverview();
-        }
     }
 
     // Mark all notifications as read
-    function markAllNotificationsAsRead() {
-        const notifications = loadNotifications();
-        notifications.forEach(notification => {
-            notification.isNew = false;
-        });
-        saveNotifications(notifications);
-        renderNotifications();
-        updateOverview();
+    async function markAllNotificationsAsRead() {
+        const token = localStorage.getItem('token');
+        if (!token) return;
+        
+        try {
+            const response = await fetch(`${window.API_BASE_URL}/api/notifications/read-all`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            
+            if (!response.ok) {
+                throw new Error('Failed to mark notifications as read');
+            }
+            
+            // Reload notifications and update UI
+            await loadNotifications();
+            await updateOverview();
+        } catch (error) {
+            console.error('Failed to mark all notifications as read:', error);
+        }
     }
 
     // Load bookings from backend
@@ -395,7 +407,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Refresh all dashboard data
     async function refreshDashboard() {
         await updateOverview();
-        renderNotifications();
+        await loadNotifications();
         await loadBookings();
         renderPaymentHistory();
     }
@@ -435,11 +447,6 @@ document.addEventListener('DOMContentLoaded', async function() {
     window.addEventListener('storage', function(e) {
         if (e.key === 'currentBooking' || e.key === 'paymentHistory') {
             refreshDashboard();
-        } else if (e.key && e.key.startsWith('notifications_')) {
-            // Check if this is the current user's notifications key
-            if (e.key === getNotificationsKey()) {
-                refreshDashboard();
-            }
         }
     });
 

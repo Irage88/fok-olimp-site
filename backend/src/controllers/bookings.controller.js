@@ -1,6 +1,7 @@
 const { getDb } = require('../db/db');
 const { successResponse, errorResponse } = require('../utils/response');
 const { validateDate, validateTime } = require('../utils/validators');
+const { createNotification } = require('../utils/notifications');
 
 async function createBooking(req, res) {
     const db = getDb();
@@ -34,6 +35,9 @@ async function createBooking(req, res) {
                     }
                     
                     const bookingId = this.lastID;
+                    
+                    // Create notification for booking
+                    createNotification(userId, 'Бронирование создано', `Ваше бронирование "${serviceTitle}" на ${date} в ${time} успешно создано.`);
                     
                     // Get created booking
                     db.get(

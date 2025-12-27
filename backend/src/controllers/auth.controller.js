@@ -4,6 +4,7 @@ const { getDb } = require('../db/db');
 const { ValidationError, UnauthorizedError, ConflictError } = require('../utils/errors');
 const { successResponse, errorResponse } = require('../utils/response');
 const { validateEmail, validatePassword } = require('../utils/validators');
+const { createNotification } = require('../utils/notifications');
 
 async function register(req, res) {
     const db = getDb();
@@ -62,6 +63,9 @@ async function register(req, res) {
                         }
                         
                         const userId = this.lastID;
+                        
+                        // Create welcome notification
+                        createNotification(userId, 'Добро пожаловать', `Добро пожаловать в ФОК "Олимп", ${firstName}! Ваш аккаунт успешно создан.`);
                         
                         // Generate token
                         const token = jwt.sign(

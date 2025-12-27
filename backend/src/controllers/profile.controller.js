@@ -1,6 +1,7 @@
 const { getDb } = require('../db/db');
 const { successResponse, errorResponse } = require('../utils/response');
 const { validateEmail, validatePhone } = require('../utils/validators');
+const { createNotification } = require('../utils/notifications');
 
 async function updateProfile(req, res) {
     const db = getDb();
@@ -61,6 +62,13 @@ async function updateProfile(req, res) {
                                     res.status(500).json(errorResponse('Failed to update profile', 500));
                                     resolve();
                                     return;
+                                }
+                                
+                                // Create notification for profile update
+                                if (email !== undefined) {
+                                    createNotification(userId, 'Профиль обновлён', 'Ваш email был успешно обновлён.');
+                                } else if (phone !== undefined) {
+                                    createNotification(userId, 'Профиль обновлён', 'Ваш телефон был успешно обновлён.');
                                 }
                                 
                                 // Get updated user
