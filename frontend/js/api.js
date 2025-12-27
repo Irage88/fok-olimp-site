@@ -1,4 +1,10 @@
-const API_BASE_URL = 'http://localhost:3000/api';
+// Determine API base URL based on environment
+const API_BASE_URL =
+  (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
+    ? "http://localhost:3000/api"
+    : `${window.location.origin}/api`;
+
+console.log("API_BASE_URL:", API_BASE_URL);
 
 function getAuthToken() {
     return localStorage.getItem('token');
