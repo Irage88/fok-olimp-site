@@ -1,5 +1,7 @@
 // Dashboard / Личный кабинет JavaScript
 
+console.log("dashboard.js loaded");
+
 let currentUser = null;
 
 document.addEventListener('DOMContentLoaded', async function() {
