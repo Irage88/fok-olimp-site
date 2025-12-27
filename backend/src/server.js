@@ -21,6 +21,10 @@ ensureDb()
         });
     })
     .catch((error) => {
-        console.error('Failed to initialize database:', error);
+        console.error('Failed to initialize database:');
+        console.error('Error details:', error);
+        if (error.stack) {
+            console.error('Stack trace:', error.stack);
+        }
         process.exit(1);
     });
