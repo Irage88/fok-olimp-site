@@ -2,8 +2,6 @@
 
 console.log("dashboard.js loaded");
 
-const API_BASE_URL = window.API_BASE_URL || 'http://localhost:3000';
-
 let currentUser = null;
 
 document.addEventListener('DOMContentLoaded', async function() {
@@ -44,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             throw new Error('No token');
         }
 
-        const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
+        const response = await fetch(`${window.API_BASE_URL}/api/auth/me`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -118,7 +116,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
 
         try {
-            const response = await fetch(`${API_BASE_URL}/api/profile`, {
+            const response = await fetch(`${window.API_BASE_URL}/api/profile`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -170,7 +168,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         try {
             // Load bookings to count active ones
-            const bookingsResponse = await fetch(`${API_BASE_URL}/api/bookings/me`, {
+            const bookingsResponse = await fetch(`${window.API_BASE_URL}/api/bookings/me`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -268,7 +266,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         if (!token) return;
 
         try {
-            const response = await fetch('http://localhost:3000/api/bookings/me', {
+            const response = await fetch(`${window.API_BASE_URL}/api/bookings/me`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -338,7 +336,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         if (!token) return;
 
         try {
-            const response = await fetch(`${API_BASE_URL}/api/bookings/${bookingId}`, {
+            const response = await fetch(`${window.API_BASE_URL}/api/bookings/${bookingId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`

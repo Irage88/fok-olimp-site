@@ -6,9 +6,6 @@ window.API_BASE_URL =
 
 console.log("API_BASE_URL:", window.API_BASE_URL);
 
-// For backward compatibility with existing api.js functions
-const API_BASE_URL = `${window.API_BASE_URL}/api`;
-
 function getAuthToken() {
     return localStorage.getItem('token');
 }
@@ -22,7 +19,7 @@ function setAuthToken(token) {
 }
 
 async function apiRequest(endpoint, options = {}) {
-    const url = `${API_BASE_URL}${endpoint}`;
+    const url = `${window.API_BASE_URL}/api${endpoint}`;
     const token = getAuthToken();
     
     const defaultHeaders = {

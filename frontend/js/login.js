@@ -105,11 +105,9 @@ document.addEventListener('DOMContentLoaded', function() {
         submitBtn.classList.add('loading');
         submitBtn.textContent = '';
 
-        const API_BASE_URL = window.API_BASE_URL || 'http://localhost:3000';
-
         // Call backend API
         try {
-            const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+            const response = await fetch(`${window.API_BASE_URL}/api/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
