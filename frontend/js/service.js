@@ -1,14 +1,18 @@
 // Service detail page JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Load service data based on URL parameter
-    function getUrlParameter(name) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(name);
+    // Load service data based on URL pathname
+    function getServiceIdFromPath() {
+        const pathParts = window.location.pathname.split('/').filter(part => part);
+        const serviceIndex = pathParts.indexOf('service');
+        if (serviceIndex !== -1 && pathParts.length > serviceIndex + 1) {
+            return pathParts[serviceIndex + 1];
+        }
+        return null;
     }
 
     function loadServiceData() {
-        const serviceId = getUrlParameter('id');
+        const serviceId = getServiceIdFromPath();
         
         if (!serviceId) {
             showServiceNotFound();
@@ -21,6 +25,9 @@ document.addEventListener('DOMContentLoaded', function() {
             showServiceNotFound();
             return;
         }
+        
+        // Store serviceId for use in booking form
+        window.currentServiceId = serviceId;
 
         // Update page title
         const pageTitle = document.getElementById('pageTitle');
@@ -31,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update service image
         const serviceImage = document.getElementById('serviceImage');
         if (serviceImage) {
-            serviceImage.src = `assets/images/${service.galleryImage}`;
+            serviceImage.src = `/assets/images/${service.galleryImage}`;
             serviceImage.alt = service.title;
         }
 
@@ -91,6 +98,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const notFound = document.getElementById('serviceNotFound');
         if (notFound) {
             notFound.style.display = 'block';
+        } else {
+            // If not found element doesn't exist, redirect to services page
+            window.location.href = '/services';
         }
     }
 
@@ -436,16 +446,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const serviceName = document.getElementById('paymentServiceName').textContent;
             const amount = document.getElementById('paymentTotalAmount').textContent;
             
-            // Get service ID from URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const serviceId = urlParams.get('id');
+            // Get service ID from stored variable or pathname
+            const serviceId = window.currentServiceId || getServiceIdFromPath();
 
             // Get token
             const token = localStorage.getItem('token');
             if (!token) {
                 // If not logged in, redirect to login
                 alert('Необходимо войти в систему для бронирования');
-                window.location.href = './login.html';
+                window.location.href = '/login';
                 return;
             }
 
@@ -512,6 +521,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Show success toast
                 showToast('Оплата успешно выполнена!');
+
+                // Redirect to dashboard after successful payment
+                setTimeout(function() {
+                    window.location.href = '/dashboard';
+                }, 1500);
             } catch (error) {
                 console.error('Failed to create booking:', error);
                 

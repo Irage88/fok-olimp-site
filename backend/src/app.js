@@ -54,6 +54,10 @@ app.get('/service', (req, res) => {
     res.sendFile(path.join(frontendPath, 'service.html'));
 });
 
+app.get('/service/:id', (req, res) => {
+    res.sendFile(path.join(frontendPath, 'service.html'));
+});
+
 app.get('/contacts', (req, res) => {
     console.log("Serving page:", req.path);
     res.sendFile(path.join(frontendPath, 'contacts.html'));
@@ -74,6 +78,10 @@ app.get('/dashboard', (req, res) => {
     res.sendFile(path.join(frontendPath, 'dashboard.html'));
 });
 
+app.get('/gto', (req, res) => {
+    res.sendFile(path.join(frontendPath, 'gto.html'));
+});
+
 // Redirects from .html paths to clean paths
 app.get('/index.html', (req, res) => {
     res.redirect(301, '/');
@@ -88,7 +96,12 @@ app.get('/services.html', (req, res) => {
 });
 
 app.get('/service.html', (req, res) => {
-    res.redirect(301, '/service');
+    // If there's an id query param, redirect to clean URL
+    if (req.query.id) {
+        res.redirect(301, `/service/${req.query.id}`);
+    } else {
+        res.redirect(301, '/service');
+    }
 });
 
 app.get('/contacts.html', (req, res) => {
@@ -105,6 +118,10 @@ app.get('/login.html', (req, res) => {
 
 app.get('/dashboard.html', (req, res) => {
     res.redirect(301, '/dashboard');
+});
+
+app.get('/gto.html', (req, res) => {
+    res.redirect(301, '/gto');
 });
 
 // Serve static files from frontend directory (CSS, JS, images, etc.)

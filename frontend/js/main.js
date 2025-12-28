@@ -26,7 +26,7 @@ function updateAuthUI() {
         if (registerBtn) registerBtn.style.display = 'none';
         if (dashboardBtn) {
             dashboardBtn.style.display = '';
-            dashboardBtn.href = './dashboard.html';
+            dashboardBtn.href = '/dashboard';
             if (!dashboardBtn.textContent.includes('Личный кабинет')) {
                 dashboardBtn.textContent = 'Личный кабинет';
                 dashboardBtn.classList.remove('btn-outline');
@@ -35,7 +35,7 @@ function updateAuthUI() {
         } else {
             // Create dashboard button if it doesn't exist
             const newDashboardBtn = document.createElement('a');
-            newDashboardBtn.href = './dashboard.html';
+            newDashboardBtn.href = '/dashboard';
             newDashboardBtn.className = 'btn btn-primary';
             newDashboardBtn.textContent = 'Личный кабинет';
             headerButtons.appendChild(newDashboardBtn);
@@ -50,10 +50,49 @@ function updateAuthUI() {
     }
 }
 
+// Fix relative HTML links to absolute paths
+function fixRelativeHtmlLinks() {
+    const allLinks = document.querySelectorAll('a[href]');
+    const htmlFiles = ['dashboard.html', 'login.html', 'register.html', 'services.html', 'contacts.html', 'about.html', 'index.html', 'service.html', 'gto.html'];
+    
+    allLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (!href) return;
+        
+        // Skip external links, anchors, mailto, tel, and already absolute paths
+        if (href.startsWith('http://') || href.startsWith('https://') || 
+            href.startsWith('mailto:') || href.startsWith('tel:') || 
+            href.startsWith('#') || href.startsWith('/')) {
+            return;
+        }
+        
+        // Skip service detail links (contain service/)
+        if (href.includes('service/')) {
+            return;
+        }
+        
+        // Check if href is a relative HTML file
+        const isHtmlFile = htmlFiles.some(file => href === file || href === './' + file || href === '././' + file);
+        
+        if (isHtmlFile) {
+            // Convert to absolute path
+            const fileName = href.replace(/^\.\/+/, ''); // Remove leading ./ or ././
+            if (fileName === 'index.html') {
+                link.setAttribute('href', '/');
+            } else {
+                link.setAttribute('href', '/' + fileName);
+            }
+        }
+    });
+}
+
 // Smooth scrolling for anchor links
 document.addEventListener('DOMContentLoaded', function() {
     // Update auth UI on page load
     updateAuthUI();
+    
+    // Fix all relative HTML links (after updateAuthUI which may create links)
+    fixRelativeHtmlLinks();
     // Active page highlighting
     const currentPage = document.body.getAttribute('data-page');
     if (currentPage) {
@@ -223,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function logout() {
     localStorage.removeItem('token');
     updateAuthUI();
-    window.location.href = './login.html';
+    window.location.href = '/login';
 }
 
 // Export functions for use in other scripts

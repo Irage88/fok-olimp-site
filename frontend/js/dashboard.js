@@ -369,39 +369,68 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
     }
 
-    // Render payment history
-    function renderPaymentHistory() {
-        const paymentHistory = JSON.parse(localStorage.getItem('paymentHistory') || 'null');
-        
-        if (!paymentHistory) {
+    // Load payment history from backend
+    async function loadPaymentHistory() {
+        const token = localStorage.getItem('token');
+        if (!token) {
             paymentHistoryContentEl.innerHTML = '<p class="dashboard-empty-state">Нет истории оплат</p>';
             return;
         }
 
-        const date = formatDate(paymentHistory.date || paymentHistory.timestamp);
-        const status = paymentHistory.status === 'paid' ? 'успешно' : 'ошибка';
-        const statusClass = paymentHistory.status === 'paid' ? 'dashboard-badge-success' : 'dashboard-badge-error';
+        try {
+            const response = await fetch(`${window.API_BASE_URL}/api/bookings/me`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
 
-        paymentHistoryContentEl.innerHTML = `
-            <div class="dashboard-payment-row">
-                <div class="dashboard-payment-col">
-                    <p class="dashboard-payment-label">Дата</p>
-                    <p class="dashboard-payment-value">${date}</p>
+            const data = await response.json();
+
+            if (response.ok && data.success && data.data) {
+                // Filter for paid bookings only
+                const paidBookings = data.data.filter(booking => booking.status === 'paid');
+                renderPaymentHistory(paidBookings);
+            } else {
+                throw new Error(data.error || 'Failed to load payment history');
+            }
+        } catch (error) {
+            console.error('Failed to load payment history:', error);
+            paymentHistoryContentEl.innerHTML = '<p class="dashboard-empty-state">Нет истории оплат</p>';
+        }
+    }
+
+    // Render payment history
+    function renderPaymentHistory(paidBookings) {
+        if (!paidBookings || paidBookings.length === 0) {
+            paymentHistoryContentEl.innerHTML = '<p class="dashboard-empty-state">Нет истории оплат</p>';
+            return;
+        }
+
+        paymentHistoryContentEl.innerHTML = paidBookings.map(booking => {
+            const date = formatDate(booking.createdAt || booking.date);
+            const dateTime = booking.date ? `${booking.date}${booking.time ? ' ' + booking.time : ''}` : date;
+            
+            return `
+                <div class="dashboard-payment-row">
+                    <div class="dashboard-payment-col">
+                        <p class="dashboard-payment-label">Дата</p>
+                        <p class="dashboard-payment-value">${dateTime}</p>
+                    </div>
+                    <div class="dashboard-payment-col">
+                        <p class="dashboard-payment-label">Услуга</p>
+                        <p class="dashboard-payment-value">${booking.serviceTitle || 'Не указано'}</p>
+                    </div>
+                    <div class="dashboard-payment-col">
+                        <p class="dashboard-payment-label">Сумма</p>
+                        <p class="dashboard-payment-value">${booking.amount || booking.servicePrice || 'Не указано'}</p>
+                    </div>
+                    <div class="dashboard-payment-col">
+                        <p class="dashboard-payment-label">Статус</p>
+                        <div class="dashboard-badge dashboard-badge-success">успешно</div>
+                    </div>
                 </div>
-                <div class="dashboard-payment-col">
-                    <p class="dashboard-payment-label">Услуга</p>
-                    <p class="dashboard-payment-value">${paymentHistory.serviceName || 'Не указано'}</p>
-                </div>
-                <div class="dashboard-payment-col">
-                    <p class="dashboard-payment-label">Сумма</p>
-                    <p class="dashboard-payment-value">${paymentHistory.amount || 'Не указано'}</p>
-                </div>
-                <div class="dashboard-payment-col">
-                    <p class="dashboard-payment-label">Статус</p>
-                    <div class="dashboard-badge ${statusClass}">${status}</div>
-                </div>
-            </div>
-        `;
+            `;
+        }).join('');
     }
 
     // Refresh all dashboard data
@@ -409,7 +438,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         await updateOverview();
         await loadNotifications();
         await loadBookings();
-        renderPaymentHistory();
+        await loadPaymentHistory();
     }
 
     // Event listeners
@@ -445,7 +474,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     // Listen for storage changes (for cross-tab updates)
     window.addEventListener('storage', function(e) {
-        if (e.key === 'currentBooking' || e.key === 'paymentHistory') {
+        if (e.key === 'currentBooking') {
             refreshDashboard();
         }
     });
