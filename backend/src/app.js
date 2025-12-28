@@ -16,11 +16,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files from frontend directory
-const frontendPath = path.join(__dirname, '../../frontend');
-app.use(express.static(frontendPath));
-
-// API routes
+// API routes (must be before static and page routes)
 app.use('/api/auth', authRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/services', servicesRoutes);
@@ -33,37 +29,49 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'ok' });
 });
 
+// Frontend path
+const frontendPath = path.join(__dirname, '../../frontend');
+
 // Clean URL routes (serve HTML files without .html extension)
+// Must be BEFORE express.static to take precedence
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontend/index.html'));
+    console.log("Serving page:", req.path);
+    res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
 app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontend/about.html'));
+    console.log("Serving page:", req.path);
+    res.sendFile(path.join(frontendPath, 'about.html'));
 });
 
 app.get('/services', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontend/services.html'));
+    console.log("Serving page:", req.path);
+    res.sendFile(path.join(frontendPath, 'services.html'));
 });
 
 app.get('/service', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontend/service.html'));
+    console.log("Serving page:", req.path);
+    res.sendFile(path.join(frontendPath, 'service.html'));
 });
 
 app.get('/contacts', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontend/contacts.html'));
+    console.log("Serving page:", req.path);
+    res.sendFile(path.join(frontendPath, 'contacts.html'));
 });
 
 app.get('/register', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontend/register.html'));
+    console.log("Serving page:", req.path);
+    res.sendFile(path.join(frontendPath, 'register.html'));
 });
 
 app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontend/login.html'));
+    console.log("Serving page:", req.path);
+    res.sendFile(path.join(frontendPath, 'login.html'));
 });
 
 app.get('/dashboard', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontend/dashboard.html'));
+    console.log("Serving page:", req.path);
+    res.sendFile(path.join(frontendPath, 'dashboard.html'));
 });
 
 // Redirects from .html paths to clean paths
@@ -98,6 +106,10 @@ app.get('/login.html', (req, res) => {
 app.get('/dashboard.html', (req, res) => {
     res.redirect(301, '/dashboard');
 });
+
+// Serve static files from frontend directory (CSS, JS, images, etc.)
+// Must be AFTER clean URL routes so they don't intercept page requests
+app.use(express.static(frontendPath));
 
 // Catch-all: serve index.html for SPA routing (if needed)
 // For now, we'll let Express serve static files normally
