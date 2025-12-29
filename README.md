@@ -235,9 +235,8 @@ NODE_ENV=development
 
 ### English Documentation
 
-- **[README_EN.md](./README_EN.md)** — Project overview (English)
-- **[SETUP_EN.md](./SETUP_EN.md)** — Setup guide (English)
-- **[IMPLEMENTATION_SUMMARY_EN.md](./IMPLEMENTATION_SUMMARY_EN.md)** — Implementation summary (English)
-
+- **[README_EN.md](./README.en.md)** — Project overview (English)
+- **[SETUP_EN.md](./SETUP.en.md)** — Setup guide (English)
+- **[IMPLEMENTATION_SUMMARY_EN.md](./IMPLEMENTATION_SUMMARY.en.md)** — Implementation summary (English)
 
 
