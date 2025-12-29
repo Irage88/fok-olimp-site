@@ -52,16 +52,15 @@ node --version
 
 ## Создание файла .env
 
-1. **Создайте файл `.env`** в директории `backend` (в той же папке, где находится `package.json`).
-
-2. **Добавьте в файл следующее содержимое:**
-   ```env
-   PORT=3000
-   JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
-   NODE_ENV=development
+1. **Скопируйте файл `.env.example` в `.env`** в директории `backend`:
+   ```powershell
+   cd backend
+   Copy-Item .env.example .env
    ```
 
-3. **ВАЖНО:** Замените значение `JWT_SECRET` на надёжный случайный ключ. В production используйте длинную случайную строку (минимум 32 символа).
+2. **Откройте файл `.env`** и замените значение `JWT_SECRET` на надёжный случайный ключ. В production используйте длинную случайную строку (минимум 32 символа).
+
+   **ВАЖНО:** Файл `.env` содержит секретные данные и не должен быть закоммичен в Git. Он уже добавлен в `.gitignore`.
 
    Пример генерации секретного ключа в PowerShell:
    ```powershell

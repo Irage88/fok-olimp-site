@@ -106,15 +106,15 @@ project/
 
 ## Переменные окружения
 
-Создайте файл `.env` в директории `backend` со следующим содержимым:
+1. **Скопируйте файл `.env.example` в `.env`** в директории `backend`:
+   ```powershell
+   cd backend
+   Copy-Item .env.example .env
+   ```
 
-```env
-PORT=3000
-JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
-NODE_ENV=development
-```
+2. **Откройте файл `.env`** и замените значение `JWT_SECRET` на надёжный случайный ключ перед развёртыванием в production!
 
-**ВАЖНО:** Замените `JWT_SECRET` на надёжный случайный ключ перед развёртыванием в production!
+**ВАЖНО:** Файл `.env` содержит секретные данные и не должен быть закоммичен в Git. Он уже добавлен в `.gitignore`.
 
 ## Основные API endpoints
 
